@@ -7,5 +7,6 @@ export async function activate (exec, { args = [] }) {
   const loaded = exec.runtime.protocols ?? {}
   if (!loaded[name]) throw new Error(`no protocol: ${name} (${Object.keys(loaded).sort().join(', ')})`)
   exec.put(activeAt(name), Buffer.from(JSON.stringify(loaded[name], null, 2) + '\n'))
+  exec.log('verbose', 'activated', { protocol: name, actions: Object.keys(loaded[name].actions ?? {}).length })
   return { activated: name }
 }

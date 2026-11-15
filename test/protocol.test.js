@@ -8,6 +8,11 @@ function context (protocols) {
   const exec = {
     runtime: { protocols },
     read: async uri => { if (!(uri in files)) throw new Error('none'); return files[uri] },
+    // the rest of an execution context, standing in: a file that may not
+    // be there, the log (kept: entries), a step run as it is
+    find: async function (p) { try { return await this.read(p) } catch { return null } },
+    log: function (level, event, data = {}) { (this.entries ??= []).push({ level, event, ...data }) },
+    step: async function (event, data, fn, level = 'verbose') { const r = await fn(); (this.entries ??= []).push({ level, event, ...(typeof data === 'function' ? data(r) : data) }); return r },
     put: (uri, bytes) => { files[uri] = Buffer.from(bytes) },
     remove: uri => { delete files[uri] }
   }
