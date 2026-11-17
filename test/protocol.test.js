@@ -1,7 +1,7 @@
 // The actions on a context written here: its files by URI, the protocols
 // its runtime loaded.
 import test from 'brittle'
-import { activate, deactivate, CONFIG, activeAt } from '../index.js'
+import { activate, deactivate, activeAt } from '../index.js'
 
 function context (protocols) {
   const files = {}
@@ -38,9 +38,6 @@ test('deactivate: its file removed; one not active, no name', async (t) => {
   await t.exception(deactivate(exec, { uri: ['.'] }), /missing argument: protocol/)
 })
 
-test('the config: both actions at the mrepo itself, their argument the protocol', (t) => {
-  t.alike(Object.keys(CONFIG.actions), ['activate', 'deactivate'])
-  t.alike(Object.values(CONFIG.actions).map(a => [a.uris, a.args]), [[['.'], ['protocol']], [['.'], ['protocol']]])
+test('where the active set is: the protocols layer, a file a protocol', (t) => {
   t.is(activeAt('boot'), '/protocols/boot.json')
-  t.ok(CONFIG.description && Object.values(CONFIG.actions).every(a => a.description))
 })

@@ -8,10 +8,10 @@ file a protocol. These two actions write and remove those files; the hooks
 of an mrepo's status transitions call them. Offered by
 `haiccing/base-package-protocol`.
 
-| | |
-|---|---|
-| [external/](external/) | the protocol protocol's actions |
-| [test/](test/) | its tests |
+## Links
+
+- [external](external/)
+- [test](test/)
 
 ## Examples
 
@@ -21,11 +21,6 @@ of an mrepo's status transitions call them. Offered by
 ["protocol/deactivate", ".", "boot"]     a stop hook
 ```
 
-## Config
-
-`CONFIG`, in `internal/config.js`: both actions at `.`, the mrepo itself,
-their argument the protocol's name.
-
 ## Tests
 
-- `npm test`: the actions on a context written for it, the config.
+- `npm test`: the actions on a context written for it.
