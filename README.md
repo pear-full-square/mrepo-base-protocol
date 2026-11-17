@@ -23,4 +23,4 @@ of an mrepo's status transitions call them. Offered by
 
 ## Tests
 
-- `brittle-bare test/*.test.js`: the actions on a context written for it.
+- `brittle-bare test/*.test.js` (Bare installed): the actions on a context written for it.
