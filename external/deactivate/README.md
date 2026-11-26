@@ -15,7 +15,8 @@ can be activated again.
 
 ## Returns
 
-`{ deactivated: "<protocol>" }`.
+What it did, said: `Deactivated <protocol>: requests from outside are
+refused for it.`
 
 ## Errors
 
