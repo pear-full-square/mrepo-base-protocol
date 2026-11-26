@@ -6,6 +6,6 @@ export async function deactivate (exec, { args = [] }) {
   if (!name) throw new Error('missing argument: protocol')
   if (await exec.find(activeAt(name)) === null) throw new Error(`not active: ${name}`)
   exec.remove(activeAt(name))
-  exec.log('verbose', 'deactivated', { protocol: name })
-  return { deactivated: name }
+  exec.log('verbose', 'deactivated', 'Its file removed from the protocols layer.')
+  return `Deactivated ${name}: requests from outside are refused for it.`
 }

@@ -17,7 +17,8 @@ changes nothing else.
 
 ## Returns
 
-`{ activated: "<protocol>" }`.
+What it did, said: `Activated <protocol>: requests from outside are
+accepted for it.`
 
 ## Errors
 
